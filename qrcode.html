@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="noindex, follow">
+  <title>QR code — CV Fabrice SAGOT</title>
+  <meta name="description" content="QR code imprimable donnant accès au CV en ligne de Fabrice SAGOT.">
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('cv-theme'); } catch (e) {}
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = saved === 'dark' || saved === 'light' ? saved : (prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f4f7f8; --surface: #ffffff; --text: #17262e; --muted: #5b6b74;
+      --teal: #00807d; --teal-soft: rgba(0, 128, 125, 0.12); --link: #085296; --border: #d8e2e4;
+    }
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0e1b20; --surface: #14262c; --text: #e7f2f3; --muted: #a3bcc4;
+      --teal: #33b3ae; --teal-soft: rgba(51, 179, 174, 0.16); --link: #7fd0e8; --border: #27454e;
+    }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.55;
+    }
+    .wrap { max-width: 21cm; margin: 0 auto; padding: 2rem 1rem; }
+    .actions { text-align: center; margin-bottom: 1.25rem; }
+    button {
+      font: inherit; padding: 0.6rem 1.4rem; border-radius: 999px; cursor: pointer;
+      border: 1px solid var(--teal); background: var(--teal); color: #fff; font-weight: 600;
+    }
+    button.ghost { background: transparent; color: var(--teal); margin-left: 0.5rem; }
+    .sheet {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 3rem 2rem; text-align: center;
+    }
+    .sheet h1 { margin: 0 0 0.3rem; font-size: 1.5rem; color: var(--teal); }
+    .sheet .sub { color: var(--muted); margin: 0 0 2rem; }
+    .qr { width: 62mm; height: 62mm; margin: 0 auto; display: block; }
+    .url { margin-top: 1.5rem; font-size: 1.05rem; color: var(--link); word-break: break-all; }
+    .note { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; }
+    /* A4 : la feuille s'imprime pleine page, toujours en clair, sans boutons */
+    @media print {
+      @page { size: A4 portrait; margin: 12mm; }
+      body { background: #fff; }
+      .wrap { padding: 0; max-width: none; }
+      .actions { display: none; }
+      .sheet { border: none; border-radius: 0; background: #fff; color: #111; padding: 0; }
+      .qr { width: 68mm; height: 68mm; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="actions">
+      <button type="button" onclick="window.print()">🖨️ Imprimer la feuille QR</button>
+      <a href="index.html" style="text-decoration:none"><button type="button" class="ghost">← Retour au CV</button></a>
+    </div>
+    <div class="sheet">
+      <h1>Fabrice SAGOT — Manager · Consultant</h1>
+      <p class="sub">Flashez ce code avec l'appareil photo de votre téléphone pour ouvrir mon CV en ligne.</p>
+      <img class="qr" src="assets/qr-code.svg" alt="QR code pointant vers le CV en ligne de Fabrice SAGOT">
+      <p class="url">https://fabrice-sagot.github.io/</p>
+      <p class="note">Claire / foncée, version PDF téléchargeable, mode sombre disponible sur le site.</p>
+    </div>
+  </div>
+</body>
+</html>
